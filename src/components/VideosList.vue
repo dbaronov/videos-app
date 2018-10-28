@@ -1,10 +1,13 @@
 <template>
-  <div id="videos-list">
+  <div id="videos-list" v-if="filteredVideos.length">
       <div class="video-list__item" v-for="video in filteredVideos" v-bind:key="video.id">
           <span class="video-list__item-rating">{{ video.vote_average }}</span>
           <img v-bind:src="`http://image.tmdb.org/t/p/w300/${video.poster_path}`" v-bind:alt="video.title" />
           <h2>{{ video.title }}</h2>
       </div>
+  </div>
+  <div v-else>
+    <p>No result found based on your input</p>
   </div>
 </template>
 
