@@ -1,7 +1,7 @@
 <template>
     <div id="rating-slider">
         <h3>Rating ( {{ filter.rating }} )</h3>
-        <input type="range" min="0" max="10" step="0.5" @change="filterVidoes" v-model="filter.rating">
+        <input type="range" min="0" max="10" step="0.5" @input="filterVidoes" v-model="filter.rating">
     </div>
 </template>
 
