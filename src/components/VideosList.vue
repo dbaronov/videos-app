@@ -4,6 +4,7 @@
           <span class="video-list__item-rating">{{ video.vote_average }}</span>
           <img v-bind:src="`http://image.tmdb.org/t/p/w300/${video.poster_path}`" v-bind:alt="video.title" />
           <h2>{{ video.title }}</h2>
+          <p>{{ video.genre_ids }}</p>
       </div>
   </div>
 </template>
@@ -11,7 +12,7 @@
 <script>
 // VideosService import
 import videosService from "../services/video-service";
-
+// Filter
 import videosFilter from "../modules/videos-filter";
 
 export default {
