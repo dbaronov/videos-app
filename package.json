@@ -4,6 +4,7 @@
   "private": false,
   "dependencies": {
     "lodash.intersection": "^4.4.0",
+    "lodash.reverse": "^4.0.1",
     "lodash.sortby": "^4.7.0",
     "vue": "^2.5.17",
     "vuex": "^3.0.1"
