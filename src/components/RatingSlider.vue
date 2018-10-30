@@ -14,14 +14,6 @@ export default {
     filter() {
       return this.$store.state.filter;
     },
-    rating: {
-      get: function() {
-        return this.$store.state.filter.rating;
-      },
-      set: function(newRating) {
-        this.$store.dispatch("UPDATE_RATING", newRating);
-      }
-    },
     filteredVideos: {
       get: function() {
         return this.$store.state.filteredVideos;
