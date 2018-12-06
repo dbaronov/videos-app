@@ -26,6 +26,9 @@ export default {
 </script>
 
 <style>
+  body {
+    position: relative;
+  }
   #app {
     max-width: 1200px;
     margin: 0 auto;
