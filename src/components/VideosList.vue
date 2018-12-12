@@ -3,7 +3,9 @@
 
     <div id="videos-list" v-if="filteredVideos.length">
         <div class="video-list__item" v-for="(video, videoIndex) in filteredVideos" v-bind:key="video.id">
-          <span class="video-list__item-rating">{{ video.vote_average }}</span>
+          <span class="video-list__item-rating">
+            {{ video.vote_average }}/<small>10</small>
+          </span>
           <img v-bind:src="`//image.tmdb.org/t/p/w300/${video.poster_path}`" v-bind:alt="video.title" />
           <h2>{{ video.title }}</h2>
           <button class="button-green" @click="prepareDestroySelectedVideo(videoIndex)">More info</button>
@@ -19,7 +21,7 @@
         <button class="close-button" @click="prepareDestroySelectedVideo(null)"></button>
 
         <h2>{{ filteredVideos[selectedVideo].title }}</h2>
-        <img v-bind:src="`//image.tmdb.org/t/p/w300/${filteredVideos[selectedVideo].poster_path}`" v-bind:alt="filteredVideos[selectedVideo].title" />
+        <img v-bind:src="`//image.tmdb.org/t/p/w300/${filteredVideos[selectedVideo].backdrop_path}`" v-bind:alt="filteredVideos[selectedVideo].title" />
         <p>{{ filteredVideos[selectedVideo].overview }}</p>
       </div>
     </div>
