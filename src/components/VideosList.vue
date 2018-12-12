@@ -6,7 +6,7 @@
           <span class="video-list__item-rating">{{ video.vote_average }}</span>
           <img v-bind:src="`//image.tmdb.org/t/p/w300/${video.poster_path}`" v-bind:alt="video.title" />
           <h2>{{ video.title }}</h2>
-          <button class="button-green" @click="prepareSelectedVideo(videoIndex)">More info</button>
+          <button class="button-green" @click="prepareDestroySelectedVideo(videoIndex)">More info</button>
       </div>
     </div>
 
@@ -16,7 +16,7 @@
 
     <div class="video-list__modal" v-if="modalActive">
       <div class="video-list__modal-content">
-        <button class="close-button" @click="destroySelectedVideo"></button>
+        <button class="close-button" @click="prepareDestroySelectedVideo(null)"></button>
 
         <h2>{{ filteredVideos[selectedVideo].title }}</h2>
         <img v-bind:src="`//image.tmdb.org/t/p/w300/${filteredVideos[selectedVideo].poster_path}`" v-bind:alt="filteredVideos[selectedVideo].title" />
@@ -74,15 +74,15 @@ export default {
     loadVideos: async function() {
       this.$store.state.origVideos = await videosService.fetchVideos();
     },
-    prepareSelectedVideo: function(videoIndex) {
-      this.selectedVideo = videoIndex
-      this.modalActive = true
-    },
-    destroySelectedVideo: function() {
-      this.selectedVideo = null
-      this.modalActive = false
+    prepareDestroySelectedVideo: function(videoIndex) {
+      if (videoIndex || videoIndex === 0) {
+        this.selectedVideo = videoIndex
+        this.modalActive = true
+      } else {
+        this.selectedVideo = null
+        this.modalActive = false
+      }
     }
-
   },
   async mounted() {
     await this.loadVideos();
