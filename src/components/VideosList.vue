@@ -31,8 +31,8 @@
 </template>
 
 <script>
-// VideosService import
-import videosService from "../services/video-service";
+// dataService import
+import dataService from "../services/data-service";
 // Filter
 import videosFilter from "../modules/videos-filter";
 
@@ -74,7 +74,8 @@ export default {
   },
   methods: {
     loadVideos: async function() {
-      this.$store.state.origVideos = await videosService.fetchVideos();
+      let result = await dataService.fetchData();
+      this.$store.state.origVideos = result[0].results;
     },
     prepareDestroySelectedVideo: function(videoIndex) {
       if (videoIndex || videoIndex === 0) {

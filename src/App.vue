@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header msg="Videos List"/>
+    <Header msg="Video library"/>
     <Genres/>
     <RatingSlider/>
     <VideosList/>

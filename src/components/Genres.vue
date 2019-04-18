@@ -1,17 +1,22 @@
 <template>
   <div id="genres-wrap">
+
+    <h3>Filters ( {{filter.selectedGenres.length}} applied ) </h3>
+
     <div id="genres-list">
         <div class="genres-list__item" v-for="genre in genres" v-bind:key="genre.id">
-          <input type="checkbox" v-bind:id="genre.id" v-bind:name="genre.name" v-bind:value="genre.id" @change="filterVidoes" v-model="filter.selectedGenres">
-          <label v-bind:for="genre.id">{{ genre.name }}</label>
+          <label v-bind:for="genre.id">{{ genre.name }}
+            <input type="checkbox" v-bind:id="genre.id" v-bind:name="genre.name" v-bind:value="genre.id" @change="filterVidoes" v-model="filter.selectedGenres">
+            <span></span>
+          </label>
         </div>
     </div>
 </div>
 </template>
 
 <script>
-// genresService import
-import genresService from "../services/genre-service";
+// dataService import
+import dataService from "../services/data-service";
 // videosService import
 import videosFilter from "../modules/videos-filter";
 
@@ -48,7 +53,8 @@ export default {
   },
   methods: {
     loadGenres: async function() {
-      this.$store.state.genres = await genresService.fetchGenres();
+      let result = await dataService.fetchData();
+      this.$store.state.genres = result[1].genres;
     },
     filterVidoes() {
       this.filteredVideos = videosFilter.filter(this.filter, this.origVideos);
@@ -72,8 +78,54 @@ export default {
   }
 
   .genres-list__item {
-    margin: 0 10px;
-    padding: 0 10px;
+    margin: 0 10px 20px;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 12.5%;
+    text-align: left;
+  }
+
+  .genres-list__item label {
+    background-color: #ececec;
+    padding: 6px 40px 6px 10px;
+    border-radius: 4px;
+    font-family: sans-serif;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+  }
+
+  .genres-list__item span {
+    width: 30px;
+    height: 100%;
+    background-color: red;
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 100;
+    border-radius: 0px 4px 4px 0px;
+    color: white;
+    text-align: center;
+  }
+
+  .genres-list__item span:before {
+      content:"-";
+      line-height: 30px;
+  }
+
+  .genres-list__item input[type="checkbox"] {
+      opacity: 0;
+      position: absolute;
+  }
+
+  .genres-list__item input[type="checkbox"]:checked + span {
+      background-color: green;
+  }
+
+  .genres-list__item input[type="checkbox"]:checked + span:before {
+      content:"+";
   }
 
   /* Styles go here */
