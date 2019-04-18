@@ -1,8 +1,6 @@
 <template>
   <div id="genres-wrap">
-
     <h3>Filters ( {{filter.selectedGenres.length}} applied ) </h3>
-
     <div id="genres-list">
         <div class="genres-list__item" v-for="genre in genres" v-bind:key="genre.id">
           <label v-bind:for="genre.id">{{ genre.name }}
@@ -100,6 +98,7 @@ export default {
     width: 30px;
     height: 100%;
     background-color: red;
+    background: linear-gradient(rgb(255, 0, 0), rgb(225, 0, 0));
     display: inline-block;
     position: absolute;
     right: 0;
@@ -121,7 +120,7 @@ export default {
   }
 
   .genres-list__item input[type="checkbox"]:checked + span {
-      background-color: green;
+      background: linear-gradient(rgb(29, 176, 42), rgb(24, 146, 35));
   }
 
   .genres-list__item input[type="checkbox"]:checked + span:before {

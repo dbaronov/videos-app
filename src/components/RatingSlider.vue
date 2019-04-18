@@ -45,6 +45,7 @@ export default {
   -webkit-appearance: none;
   width: calc(100% - 40px);
   height: 25px;
+  border-radius: 4px;
   background: #d3d3d3;
   outline: none;
   opacity: 0.7;
@@ -63,6 +64,7 @@ export default {
   height: 25px;
   background: orange;
   cursor: pointer;
+  border-radius: 4px;
 }
 
 #rating-slider::-moz-range-thumb {
@@ -70,6 +72,7 @@ export default {
   height: 25px;
   background: #4caf50;
   cursor: pointer;
+  border-radius: 4px;
 }
 
 #rating-slider h3 {
