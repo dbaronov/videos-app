@@ -17,7 +17,7 @@ const dataService = {
                    return value;
                 })
                 .catch((err) => {
-                  return err;
+                  throw new Error('Something went wrong')
                 });
   }
 }
