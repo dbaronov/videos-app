@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": false,
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^1.6.0",
     "lodash.intersection": "^4.4.0",
     "lodash.reverse": "^4.0.1",
     "lodash.sortby": "^4.7.0",
